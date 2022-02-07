@@ -1,0 +1,3 @@
+include/**/*.o
+libusbip/*.o
+libusbip/*.a

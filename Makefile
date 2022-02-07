@@ -1,8 +1,8 @@
 AR := ar
 CC := gcc
 
-CFLAGS = -I./include/libusb -I./libusbip -I/usr/local/include -I/opt/local/include
-LDFLAGS = -L/usr/lib -L/opt/local/lib 
+CFLAGS = -I./include/tpl -I./include/libusb -I./libusbip -I/usr/local/include -I/opt/local/include
+LDFLAGS = -L/usr/lib -L/opt/local/lib
 LIBS = -lusb-1.0
 
 LIBUSBIP_TARGET = libusbip/libusbip.a
@@ -49,7 +49,7 @@ OBJECTS = $(LIBUSBIP_OBJECTS) $(RPCSERVER_OBJECTS) $(RPCCLIENT_OBJECTS) $(IDEVSE
 
 %.o: %.c
 	$(CC) -c $(<) -o $(@) $(CFLAGS)
-	
+
 $(LIBUSBIP_TARGET): $(LIBUSBIP_OBJECTS)
 	$(AR) rs $(LIBUSBIP_TARGET) $(LIBUSBIP_OBJECTS)
 
@@ -67,7 +67,7 @@ $(IDEVSERIAL_TARGET): $(IDEVSERIAL_OBJECTS)
 
 $(IDEVCMD_TARGET): $(IDEVCMD_OBJECTS)
 	$(CC) -o $(IDEVCMD_TARGET) $(IDEVCMD_OBJECTS) $(IDEVCMD_CFLAGS) $(IDEVCMD_LDFLAGS) $(IDEVCMD_LIBS)
-	
+
 all: $(TARGETS)
 
 clean:
